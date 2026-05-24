@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="NovaCore - Modern digital solutions for forward-thinking businesses. Experience seamless integration, AI-powered tools, and exceptional performance.">
+  <meta name="keywords" content="digital solutions, AI integration, cloud native, modern UI, glassmorphism">
+  <meta name="author" content="NovaCore">
+  <title>NovaCore | Next-Gen Digital Solutions</title>
+  <!-- Preconnect and Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (Free Icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at 10% 20%, #0a0a1a, #03030c);
+      color: #f0f3fa;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f0f1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4f46e5;
+      border-radius: 6px;
+    }
+
+    /* Glassmorphism core */
+    .glass-card {
+      background: rgba(20, 24, 35, 0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      border: 1px solid rgba(98, 114, 164, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(120, 140, 200, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(120, 140, 255, 0.3);
+    }
+
+    /* Gradient text and buttons */
+    .gradient-text {
+      background: linear-gradient(135deg, #c084fc, #60a5fa, #38bdf8);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(95deg, #4f46e5, #8b5cf6);
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 8px 18px rgba(79, 70, 229, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover {
+      transform: scale(1.02);
+      background: linear-gradient(95deg, #6366f1, #a78bfa);
+      box-shadow: 0 12px 24px rgba(79, 70, 229, 0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid rgba(139, 92, 246, 0.7);
+      padding: 0.8rem 1.8rem;
+      border-radius: 3rem;
+      font-weight: 500;
+      color: #e0e7ff;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-outline:hover {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: #a78bfa;
+    }
+
+    /* Section styling */
+    .section-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #b9c3e6;
+      max-width: 700px;
+      margin: 0 auto 3rem auto;
+      font-size: 1.1rem;
+    }
+
+    /* navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 5, 15, 0.7);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(72, 87, 138, 0.3);
+      padding: 1rem 2rem;
+    }
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(125deg, #c084fc, #3b82f6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #e2e8f0;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #a78bfa;
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* Grids */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .feature-card {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      background: rgba(15, 20, 30, 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 1.8rem;
+      border: 1px solid rgba(100, 116, 160, 0.25);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #8b5cf6;
+      margin-bottom: 1.2rem;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .pricing-card {
+      padding: 2rem 1.8rem;
+      text-align: center;
+      transition: all 0.25s;
+    }
+    .price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin: 1rem 0;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial-card {
+      padding: 1.8rem;
+      border-radius: 1.5rem;
+    }
+    .stars {
+      color: #fbbf24;
+      margin-bottom: 1rem;
+    }
+    .faq-item {
+      background: rgba(20, 24, 40, 0.6);
+      backdrop-filter: blur(5px);
+      border-radius: 1.2rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(98, 114, 164, 0.3);
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 1.2rem 1.8rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      padding: 0 1.8rem 1.2rem 1.8rem;
+      color: #cbd5e6;
+      line-height: 1.5;
+      display: none;
+    }
+    .faq-answer.open {
+      display: block;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .contact-info p {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 1.5rem;
+      color: white;
+      margin-bottom: 1rem;
+      font-family: inherit;
+    }
+    footer {
+      background: rgba(2, 2, 10, 0.8);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid #1e293b;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .footer-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .social-icons a {
+      color: #b9c3e6;
+      margin: 0 0.6rem;
+      font-size: 1.3rem;
+      transition: 0.2s;
+    }
+    .social-icons a:hover {
+      color: #a78bfa;
+    }
+
+    /* Animation fade-up */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .section-container {
+        padding: 3rem 1.2rem;
+      }
+      .btn-primary, .btn-outline {
+        padding: 0.7rem 1.5rem;
+      }
+      .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+    }
+    /* hero extra */
+    .hero {
+      text-align: center;
+      padding: 5rem 1rem 6rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 4.5rem;
+      }
+    }
+    .glass-stat {
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      background: rgba(255,255,255,0.05);
+      margin-bottom: 1.5rem;
+    }
+    .about-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo"><i class="fas fa-bolt" style="margin-right: 8px;"></i>NovaCore</div>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="section-container hero fade-up">
+    <div class="glass-stat"><i class="fas fa-robot"></i> AI-Powered • Next-Gen Cloud</div>
+    <h1>Shape Tomorrow with <span class="gradient-text">Intelligent Edge</span></h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 1.5rem auto; color: #cbd5f0;">Seamless performance, glassmorphic design, and lightning-fast innovation. Elevate your digital presence.</p>
+    <div class="hero-btns" style="display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;">
+      <button class="btn-primary" id="getStartedBtn"><i class="fas fa-rocket"></i> Get Started</button>
+      <button class="btn-outline"><i class="fas fa-play-circle"></i> Live Demo</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section-container fade-up">
+    <h2 class="section-title">Powerful <span class="gradient-text">Features</span></h2>
+    <p class="section-subtitle">Everything you need to scale your ideas — built with modern tech stack.</p>
+    <div class="features-grid">
+      <div class="feature-card glass-card"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3>AI Integration</h3><p>Smart automation and ML insights that adapt to your workflow.</p></div>
+      <div class="feature-card glass-card"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>Lightning Speed</h3><p>Optimized edge delivery and instant data sync across devices.</p></div>
+      <div class="feature-card glass-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Quantum Security</h3><p>Bank-grade encryption with zero-trust architecture.</p></div>
+      <div class="feature-card glass-card"><div class="feature-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Cloud Native</h3><p>Seamless scalability with global serverless deployment.</p></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-container fade-up">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;">
+      <div>
+        <span class="glass-stat" style="margin-bottom: 0.5rem;"><i class="fas fa-chart-line"></i> Since 2023</span>
+        <h2 class="section-title" style="text-align: left; margin-bottom: 0.5rem;">Where <span class="gradient-text">Innovation</span> Meets Vision</h2>
+        <p style="color: #ccd6f6;">NovaCore delivers end-to-end digital transformation. We combine futuristic UI with powerful backend tools, empowering businesses to thrive in the AI era.</p>
+        <div class="about-stats">
+          <div><div class="stat-number gradient-text">98%</div><div>Client Retention</div></div>
+          <div><div class="stat-number gradient-text">150+</div><div>Projects Shipped</div></div>
+          <div><div class="stat-number gradient-text">24/7</div><div>Global Support</div></div>
+        </div>
+      </div>
+      <div class="glass-card" style="padding: 2rem; text-align: center;">
+        <i class="fas fa-cogs" style="font-size: 4rem; color: #8b5cf6;"></i>
+        <p style="margin-top: 1rem;">"Our mission is to democratize next-gen technology with elegant design and performance first approach."</p>
+        <i class="fas fa-quote-right" style="opacity: 0.5;"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="section-container fade-up">
+    <h2 class="section-title">Simple, <span class="gradient-text">Transparent</span> Pricing</h2>
+    <p class="section-subtitle">Choose the plan that fits your business. No hidden fees.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card glass-card"><h3>Starter</h3><div class="price">$29<span style="font-size: 1rem;">/mo</span></div><ul style="list-style: none; margin: 1rem 0;"><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> 5 Team Members</li><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> 50GB Storage</li><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> Basic Analytics</li></ul><button class="btn-outline" style="width:100%;">Start Free Trial</button></div>
+      <div class="pricing-card glass-card" style="border: 1px solid #8b5cf6;"><h3>Pro <span style="font-size: 0.8rem; background:#4f46e5; padding:0.2rem 0.8rem; border-radius:20px;">Popular</span></h3><div class="price">$79<span style="font-size: 1rem;">/mo</span></div><ul style="list-style: none; margin: 1rem 0;"><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> Unlimited Team</li><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> 500GB Cloud</li><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> AI Insights</li><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> Priority Support</li></ul><button class="btn-primary" style="width:100%;">Get Pro</button></div>
+      <div class="pricing-card glass-card"><h3>Enterprise</h3><div class="price">Custom</div><ul style="list-style: none; margin: 1rem 0;"><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> Dedicated Environment</li><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> SLA 99.99%</li><li><i class="fas fa-check-circle" style="color:#8b5cf6;"></i> Custom AI Models</li></ul><button class="btn-outline" style="width:100%;">Contact Sales</button></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section-container fade-up">
+    <h2 class="section-title">Loved by <span class="gradient-text">Creators</span> & Enterprises</h2>
+    <p class="section-subtitle">Join thousands of satisfied teams using NovaCore.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card glass-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Incredible platform. The glassmorphic UI feels futuristic and the performance is blazing fast."</p><h4 style="margin-top: 1rem;">— Sarah Chen</h4><span>CTO, Aether Labs</span></div>
+      <div class="testimonial-card glass-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p>"Our team boosted productivity by 40% after migrating. Pricing is fair, support is outstanding."</p><h4 style="margin-top: 1rem;">— Marcus V.</h4><span>Product Lead</span></div>
+      <div class="testimonial-card glass-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Beautiful design, seamless integration with existing tools. Best decision we've made this year."</p><h4 style="margin-top: 1rem;">— Elena R.</h4><span>Startup Founder</span></div>
+    </div>
+  </section>
+
+  <!-- FAQ Section with Accordion -->
+  <section id="faq" class="section-container fade-up">
+    <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+    <p class="section-subtitle">Everything you need to know about NovaCore.</p>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div class="faq-item"><div class="faq-question">How does the free trial work? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">You get 14 days full access to Pro features, no credit card required. After trial, choose a plan that fits your needs.</div></div>
+      <div class="faq-item"><div class="faq-question">Is there a setup fee? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">No hidden setup fees. All plans include quick onboarding and documentation.</div></div>
+      <div class="faq-item"><div class="faq-question">Can I switch plans anytime? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely. Upgrade or downgrade at any moment, billing adjusts accordingly.</div></div>
+      <div class="faq-item"><div class="faq-question">What kind of support do you offer? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">24/7 chat, email, and dedicated account manager for Enterprise plans.</div></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-container fade-up">
+    <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+    <p class="section-subtitle">Reach out for demos, inquiries, or just to say hello.</p>
+    <div class="contact-grid">
+      <div class="contact-info glass-card" style="padding: 2rem;">
+        <h3><i class="fas fa-map-marker-alt"></i> Visit Us</h3>
+        <p>Innovation Hub, 42 Digital Avenue, San Francisco, CA</p>
+        <p><i class="fas fa-phone-alt"></i> +1 (555) 789-0123</p>
+        <p><i class="fas fa-envelope"></i> hello@novacore.com</p>
+        <div class="social-icons" style="margin-top: 1.5rem;"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-github"></i></a></div>
+      </div>
+      <div class="glass-card" style="padding: 2rem;">
+        <form id="contactForm">
+          <input type="text" placeholder="Full Name" required>
+          <input type="email" placeholder="Email Address" required>
+          <textarea rows="4" placeholder="Your message..."></textarea>
+          <button type="submit" class="btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div>© 2025 NovaCore — All rights reserved.</div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-discord"></i></a>
+    </div>
+    <div><a href="#" style="color:#a5b4fc;">Privacy Policy</a> | <a href="#" style="color:#a5b4fc;">Terms</a></div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+
+// FAQ accordion
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+  question.addEventListener('click', () => {
+    const answer = question.nextElementSibling;
+
+    answer.classList.toggle('open');
+
+    const icon = question.querySelector('i');
+
+    if (answer.classList.contains('open')) {
+      icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+    } else {
+      icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+    }
+  });
+});
+
+
+// Fade-up animation on scroll
+const fadeElements = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});
+
+fadeElements.forEach(el => observer.observe(el));
+
+
+// Contact form
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  alert('Message sent successfully!');
+
+  contactForm.reset();
+});
+
+
+// Get Started button scroll
+document.getElementById('getStartedBtn').addEventListener('click', () => {
+  document.getElementById('pricing').scrollIntoView({
+    behavior: 'smooth'
+  });
+});
